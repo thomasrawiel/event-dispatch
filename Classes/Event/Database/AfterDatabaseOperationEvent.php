@@ -1,8 +1,10 @@
 <?php
 
 
-namespace TRAW\EventDispatch\Event;
+namespace TRAW\EventDispatch\Event\Database;
 
+
+use TRAW\EventDispatch\Event\AbstractEvent;
 
 /**
  * Class AfterDatabaseOperationEvent

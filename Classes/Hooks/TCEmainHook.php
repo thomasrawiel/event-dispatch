@@ -11,9 +11,9 @@ namespace TRAW\EventDispatch\Hooks;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TRAW\EventDispatch\Event\AfterDatabaseOperationEvent;
-use TRAW\EventDispatch\Event\ClearCacheEvent;
-use TRAW\EventDispatch\Event\DeleteRecordEvent;
+use TRAW\EventDispatch\Event\Database\AfterDatabaseOperationEvent;
+use TRAW\EventDispatch\Event\Database\ClearCacheEvent;
+use TRAW\EventDispatch\Event\Database\DeleteRecordEvent;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 
 
@@ -23,7 +23,6 @@ use TYPO3\CMS\Core\DataHandling\DataHandler;
  */
 class TCEmainHook extends AbstractHook
 {
-
     /**
      * @param string $table
      * @param int $id
@@ -36,7 +35,6 @@ class TCEmainHook extends AbstractHook
         $this->triggerEvent(new DeleteRecordEvent($table, $id, $recordToDelete, $recordWasDeleted, $pObj));
     }
 
-
     /**
      * @param string $status
      * @param string $table
@@ -44,7 +42,7 @@ class TCEmainHook extends AbstractHook
      * @param array $fieldArray
      * @param DataHandler $pObj
      */
-    public function processDatamap_afterDatabaseOperations(string $status, string $table, int $id, array $fieldArray, DataHandler &$pObj)
+    public function processDatamap_afterDatabaseOperations($status, $table, $id, $fieldArray, DataHandler &$pObj)
     {
         $this->triggerEvent(new AfterDatabaseOperationEvent($status, $table, $id, $fieldArray, $pObj));
     }
