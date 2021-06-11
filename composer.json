@@ -1,0 +1,28 @@
+{
+  "name": "traw/event-dispatch",
+  "description": "Dispatch events",
+  "type": "typo3-cms-extension",
+  "keywords": [
+    "TYPO3 CMS",
+    "Events",
+    "Backend",
+    "Notifications"
+  ],
+  "license": "GPL-3.0-or-later",
+  "autoload": {
+    "psr-4": {
+      "TRAW\\EventDispatch\\": "Classes/"
+    }
+  },
+  "require": {
+    "typo3/cms-core": "^10"
+  },
+  "replace": {
+    "traw/event-dispatch": "self.version"
+  },
+  "extra": {
+    "typo3/cms": {
+      "extension-key": "event_dispatch"
+    }
+  }
+}
