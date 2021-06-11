@@ -18,7 +18,7 @@
     "typo3/cms-core": "^10"
   },
   "replace": {
-    "traw/event-dispatch": "self.version"
+    "event_dispatch": "self.version"
   },
   "extra": {
     "typo3/cms": {
