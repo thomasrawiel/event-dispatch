@@ -1,0 +1,26 @@
+# customcategory=database=LLL:EXT:event_dispatch/Resources/Private/Language/locallang_settings.xlf:settings.category.database
+# customcategory=cache=LLL:EXT:event_dispatch/Resources/Private/Language/locallang_settings.xlf:settings.category.cache
+
+# customcategory=backend=LLL:EXT:event_dispatch/Resources/Private/Language/locallang_settings.xlf:settings.category.backend
+backend {
+    # cat=backend; type=boolean; label=Trigger Events for Backend User Logins
+    backendUserLogin = 1
+}
+
+# customcategory=packages=LLL:EXT:event_dispatch/Resources/Private/Language/locallang_settings.xlf:settings.category.packages
+packages {
+    # cat=packages; type=boolean; label=After packages activation
+    afterPackageActivation = 1
+    # cat=packages; type=boolean; label=After packages deactivation
+    afterPackageDeactivation = 1
+    # cat=packages; type=boolean; label=Before packages activation
+    beforePackageActivation = 0
+    # cat=packages; type=boolean; label=Packages may have changed
+    packagesMayHaveChanged = 0
+}
+
+
+database {
+    # cat=database; type=boolean; label=tcemain stuff here
+    afterAllDatabaseOperations = 1
+}

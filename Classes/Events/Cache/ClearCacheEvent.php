@@ -1,10 +1,10 @@
 <?php
 
 
-namespace TRAW\EventDispatch\Event\Database;
+namespace TRAW\EventDispatch\Events\Cache;
 
 
-use TRAW\EventDispatch\Event\AbstractEvent;
+use TRAW\EventDispatch\Events\AbstractEvent;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 
 /**

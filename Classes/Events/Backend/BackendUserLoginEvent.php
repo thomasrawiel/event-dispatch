@@ -1,14 +1,14 @@
 <?php
 
-namespace TRAW\EventDispatch\Event\Backend;
+namespace TRAW\EventDispatch\Events\Backend;
 
-use TRAW\EventDispatch\Event\AbstractEvent;
+use TRAW\EventDispatch\Events\AbstractEvent;
 
 /**
  * Class BackendLoginEvent
  * @package TRAW\EventDispatch\Event
  */
-class BackendLoginEvent extends AbstractEvent
+class BackendUserLoginEvent extends AbstractEvent
 {
     protected array $backendUser;
 

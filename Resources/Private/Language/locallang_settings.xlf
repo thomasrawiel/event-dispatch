@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2011-10-18T18:20:51Z"
+          product-name="event_dispatch">
+        <header/>
+        <body>
+            <trans-unit id="settings.category.backend">
+                <source>Backend</source>
+            </trans-unit>
+            <trans-unit id="settings.category.database">
+                <source>Database</source>
+            </trans-unit>
+            <trans-unit id="settings.category.packages">
+                <source>Packages</source>
+            </trans-unit>
+            <trans-unit id="settings.tcemain">
+                <source>asdf</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

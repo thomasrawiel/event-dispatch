@@ -2,8 +2,11 @@
 
 namespace TRAW\EventDispatch\Utility;
 
+use TRAW\EventDispatch\Domain\Model\Dto\EmConfiguration;
 use TRAW\EventDispatch\Hooks\BackendLoginHook;
 use TRAW\EventDispatch\Hooks\TCEmainHook;
+use TRAW\EventDispatch\Service\SettingsService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Class HookToEventUtility
@@ -12,37 +15,60 @@ use TRAW\EventDispatch\Hooks\TCEmainHook;
 class LocalconfUtility
 {
     /**
+     * @var string
+     */
+    protected string $_EXTKEY;
+
+    /** @var EmConfiguration */
+    protected EmConfiguration $emConfiguration;
+
+    /**
+     * LocalconfUtility constructor.
      * @param string $_EXTKEY
      */
-    public static function registerHooks(string $_EXTKEY)
+    public function __construct(string $_EXTKEY)
     {
-        self::registerBackendLoginHook($_EXTKEY);
-        self::registerTCEMainHook($_EXTKEY);
+        $this->_EXTKEY = $_EXTKEY;
+        $this->emConfiguration = SettingsService::getEmSettings();
     }
 
     /**
-     * @param string $_EXTKEY
+     *
      */
-    protected static function registerBackendLoginHook(string $_EXTKEY)
+    public function registerHooks()
     {
-        // Register hook on successful BE user login
-        $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_userauthgroup.php']['backendUserLogin'][$_EXTKEY] =
+        if($this->emConfiguration->getBackendUserLogin()) {
+            $this->registerBackendLoginHook();
+        }
+
+        $this->registerTCEMainHook();
+        $this->registerClearCacheHook();
+    }
+
+    /**
+     *  Register hook on successful BE user login
+     */
+    protected function registerBackendLoginHook()
+    {
+        $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_userauthgroup.php']['backendUserLogin'][$this->_EXTKEY] =
             BackendLoginHook::class . '->dispatch';
     }
 
-    /**
-     * @param $_EXTKEY
-     */
-    protected static function registerTCEMainHook($_EXTKEY)
+
+    protected function registerTCEMainHook()
     {
         foreach ([
                      'processDatamapClass',
                      'processCmdmapClass',
                  ] as $tceMainHookIdentifier) {
-            $GLOBALS ['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php'][$tceMainHookIdentifier][$_EXTKEY]
+            $GLOBALS ['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php'][$tceMainHookIdentifier][$this->_EXTKEY]
                 = TCEmainHook::class;
         }
-        $GLOBALS ['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc'][$_EXTKEY]
+    }
+
+    protected function registerClearCacheHook()
+    {
+        $GLOBALS ['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['clearCachePostProc'][$this->_EXTKEY]
             = TCEmainHook::class . '->clearCachePostProc';
     }
 }

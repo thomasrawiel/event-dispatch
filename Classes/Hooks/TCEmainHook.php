@@ -11,9 +11,9 @@ namespace TRAW\EventDispatch\Hooks;
  * The TYPO3 project - inspiring people to share!
  */
 
-use TRAW\EventDispatch\Event\Database\AfterDatabaseOperationEvent;
-use TRAW\EventDispatch\Event\Database\ClearCacheEvent;
-use TRAW\EventDispatch\Event\Database\DeleteRecordEvent;
+use TRAW\EventDispatch\Events\Database\AfterDatabaseOperationEvent;
+use TRAW\EventDispatch\Events\Cache\ClearCacheEvent;
+use TRAW\EventDispatch\Events\Database\DeleteRecordEvent;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 
 

@@ -1,8 +1,7 @@
 <?php
 
-namespace TRAW\EventDispatch\Event;
+namespace TRAW\EventDispatch\Events;
 
 abstract class AbstractEvent
 {
-
 }
