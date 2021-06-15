@@ -1,26 +1,51 @@
 # customcategory=database=LLL:EXT:event_dispatch/Resources/Private/Language/locallang_settings.xlf:settings.category.database
-# customcategory=cache=LLL:EXT:event_dispatch/Resources/Private/Language/locallang_settings.xlf:settings.category.cache
+
 
 # customcategory=backend=LLL:EXT:event_dispatch/Resources/Private/Language/locallang_settings.xlf:settings.category.backend
 backend {
     # cat=backend; type=boolean; label=Trigger Events for Backend User Logins
-    backendUserLogin = 1
+    backendUserLogin = 0
 }
+
+
+# customcategory=cache=LLL:EXT:event_dispatch/Resources/Private/Language/locallang_settings.xlf:settings.category.cache
+cache {
+    # cat=cache; type=boolean; label=Clear cache
+    clearCache = 0
+}
+
+database {
+    # cat=database; type=boolean; label=Pre Process Field Array
+    preProcessFieldArray = 0
+    # cat=database; type=boolean; label=Post Process
+    postProcess = 0
+    # cat=database; type=boolean; label=Post Process Field Array
+    postProcessFieldArray = 0
+    # cat=database; type=boolean; label=After all database operations
+    afterAllDatabaseOperations = 0
+    # cat=database; type=boolean; label=Delete Records
+    deleteRecord = 0
+    # cat=database; type=boolean; label=Move records
+    moveRecord = 0
+}
+
 
 # customcategory=packages=LLL:EXT:event_dispatch/Resources/Private/Language/locallang_settings.xlf:settings.category.packages
 packages {
     # cat=packages; type=boolean; label=After packages activation
-    afterPackageActivation = 1
+    afterPackageActivation = 0
     # cat=packages; type=boolean; label=After packages deactivation
-    afterPackageDeactivation = 1
+    afterPackageDeactivation = 0
     # cat=packages; type=boolean; label=Before packages activation
     beforePackageActivation = 0
+    # cat=packages; type=boolean; label=After Extension T3D Import
+    emitAfterExtensionT3DImportSignal = 0
+    # cat=packages; type=boolean; label=After Extension Static SQL Import
+    emitAfterExtensionStaticSqlImportSignal = 0
+    # cat=packages; type=boolean; label=After Extension File Import
+    emitAfterExtensionFileImportSignal = 0
+    # cat=packages; type=boolean; label=Process Action
+    emitProcessActionsSignal = 0
     # cat=packages; type=boolean; label=Packages may have changed
     packagesMayHaveChanged = 0
-}
-
-
-database {
-    # cat=database; type=boolean; label=tcemain stuff here
-    afterAllDatabaseOperations = 1
 }

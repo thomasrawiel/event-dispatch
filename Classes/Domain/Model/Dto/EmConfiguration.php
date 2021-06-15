@@ -20,9 +20,68 @@ class EmConfiguration
     /**
      * @var int
      */
-    protected int $backendUserLogin = 1;
-    protected int $afterPackageActivation = 1;
-    protected int $afterPackageDeactivation = 1;
+    protected int $backendUserLogin = 0;
+    /**
+     * @var int
+     */
+    protected int $deleteRecord = 0;
+
+    /**
+     * @var int
+     */
+    protected int $moveRecord = 0;
+    /**
+     * @var int
+     */
+    protected int $afterAllDatabaseOperations = 0;
+    /**
+     * @var int
+     */
+    protected int $postProcess = 0;
+    /**
+     * @var int
+     */
+    protected int $postProcessFieldArray = 0;
+    /**
+     * @var int
+     */
+    protected int $preProcessFieldArray = 0;
+    /**
+     * @var int
+     */
+    protected int $clearCache = 0;
+    /**
+     * @var int
+     */
+    protected int $afterPackageActivation = 0;
+    /**
+     * @var int
+     */
+    protected int $afterPackageDeactivation = 0;
+    /**
+     * @var int
+     */
+    protected int $beforePackageActivation = 0;
+    /**
+     * @var int
+     */
+    protected int $emitAfterExtensionT3DImportSignal = 0;
+    /**
+     * @var int
+     */
+    protected int $emitAfterExtensionStaticSqlImportSignal = 0;
+    /**
+     * @var int
+     */
+    protected int $emitAfterExtensionFileImportSignal = 0;
+    /**
+     * @var int
+     */
+    protected int $emitProcessActionsSignal = 0;
+    /**
+     * @var int
+     */
+    protected int $packagesMayHaveChanged = 0;
 
     /**
      * Fill the properties properly
@@ -50,6 +109,110 @@ class EmConfiguration
 
 
         }
+    }
+
+    /**
+     * @return int
+     */
+    public function getPreProcessFieldArray(): int
+    {
+        return $this->preProcessFieldArray;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPostProcessFieldArray(): int
+    {
+        return $this->postProcessFieldArray;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPostProcess(): int
+    {
+        return $this->postProcess;
+    }
+
+    /**
+     * @return int
+     */
+    public function getClearCache(): int
+    {
+        return $this->clearCache;
+    }
+
+    /**
+     * @return int
+     */
+    public function getMoveRecord(): int
+    {
+        return $this->moveRecord;
+    }
+
+    /**
+     * @return int
+     */
+    public function getAfterAllDatabaseOperations(): int
+    {
+        return $this->afterAllDatabaseOperations;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDeleteRecord(): int
+    {
+        return $this->deleteRecord;
+    }
+
+    /**
+     * @return int
+     */
+    public function getBeforePackageActivation(): int
+    {
+        return $this->beforePackageActivation;
+    }
+
+    /**
+     * @return int
+     */
+    public function getEmitAfterExtensionT3DImportSignal(): int
+    {
+        return $this->emitAfterExtensionT3DImportSignal;
+    }
+
+    /**
+     * @return int
+     */
+    public function getEmitAfterExtensionStaticSqlImportSignal(): int
+    {
+        return $this->emitAfterExtensionStaticSqlImportSignal;
+    }
+
+    /**
+     * @return int
+     */
+    public function getEmitAfterExtensionFileImportSignal(): int
+    {
+        return $this->emitAfterExtensionFileImportSignal;
+    }
+
+    /**
+     * @return int
+     */
+    public function getEmitProcessActionsSignal(): int
+    {
+        return $this->emitProcessActionsSignal;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPackagesMayHaveChanged(): int
+    {
+        return $this->packagesMayHaveChanged;
     }
 
     /**

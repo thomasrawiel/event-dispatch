@@ -6,7 +6,6 @@ use TRAW\EventDispatch\Domain\Model\Dto\EmConfiguration;
 use TRAW\EventDispatch\Hooks\BackendLoginHook;
 use TRAW\EventDispatch\Hooks\TCEmainHook;
 use TRAW\EventDispatch\Service\SettingsService;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Class HookToEventUtility
@@ -37,7 +36,7 @@ class LocalconfUtility
      */
     public function registerHooks()
     {
-        if($this->emConfiguration->getBackendUserLogin()) {
+        if ($this->emConfiguration->getBackendUserLogin()) {
             $this->registerBackendLoginHook();
         }
 
@@ -60,6 +59,7 @@ class LocalconfUtility
         foreach ([
                      'processDatamapClass',
                      'processCmdmapClass',
+                     'moveRecordClass'
                  ] as $tceMainHookIdentifier) {
             $GLOBALS ['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php'][$tceMainHookIdentifier][$this->_EXTKEY]
                 = TCEmainHook::class;

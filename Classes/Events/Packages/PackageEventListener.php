@@ -22,7 +22,9 @@ class PackageEventListener extends AbstractEventListener
      */
     public function beforePackageActivation(BeforePackageActivationEvent $event)
     {
-
+        if ($this->settings->getBeforePackageActivation()) {
+            //
+        }
     }
 
     /**
@@ -30,7 +32,9 @@ class PackageEventListener extends AbstractEventListener
      */
     public function afterPackageActivation(AfterPackageActivationEvent $event)
     {
-
+        if ($this->settings->getAfterPackageActivation()) {
+            //
+        }
     }
 
     /**

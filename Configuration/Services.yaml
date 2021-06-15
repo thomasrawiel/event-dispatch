@@ -43,13 +43,29 @@ services:
       - name: event.listener
         identifier: 'clearCache'
         event: TRAW\EventDispatch\Events\Cache\ClearCacheEvent
-  TRAW\EventDispatch\Events\Database\DeleteRecordEventListener:
+  TRAW\EventDispatch\Events\Database\DatabaseEventListener:
     tags:
       - name: event.listener
-        identifer: 'deleteRecord'
-        event: TRAW\EventDispatch\Events\Database\DeleteRecordEvent
-  TRAW\EventDispatch\Events\Database\AfterDatabaseOperationEventListener:
-    tags:
-      - name: event.listener
-        identifer: 'afterDatabaseOperation'
+        identifer: 'traw-database'
+        method: 'afterDatabaseOperation'
         event: TRAW\EventDispatch\Events\Database\AfterDatabaseOperationEvent
+      - name: event.listener
+        identifer: 'traw-database'
+        method: 'deleteRecord'
+        event: TRAW\EventDispatch\Events\Database\DeleteRecordEvent
+      - name: event.listener
+        identifier: 'traw-database'
+        method: 'moveRecord'
+        event: TRAW\EventDispatch\Events\Database\MoveRecordEvent
+      - name: event.listener
+        identifier: 'traw-database'
+        method: 'postProcess'
+        event: TRAW\EventDispatch\Events\Database\PostProcessEvent
+      - name: event.listener
+        identifier: 'traw-database'
+        method: 'postProcessFieldArray'
+        event: TRAW\EventDispatch\Events\Database\PostProcessFieldArrayEvent
+      - name: event.listener
+        identifier: 'traw-database'
+        method: 'preProcessFieldArray'
+        event: TRAW\EventDispatch\Events\Database\PreProcessFieldArrayEvent

@@ -51,6 +51,7 @@ class DeleteRecordEvent extends AbstractEvent
         $this->pObj = $pObj;
     }
 
+
     /**
      * @return string
      */
