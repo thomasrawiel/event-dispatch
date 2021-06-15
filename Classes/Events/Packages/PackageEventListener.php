@@ -9,6 +9,7 @@ use TYPO3\CMS\Core\Package\Event\BeforePackageActivationEvent;
 use TYPO3\CMS\Core\Package\Event\PackagesMayHaveChangedEvent;
 use TYPO3\CMS\Extensionmanager\Event\AfterExtensionDatabaseContentHasBeenImportedEvent;
 use TYPO3\CMS\Extensionmanager\Event\AfterExtensionFilesHaveBeenImportedEvent;
+use TYPO3\CMS\Extensionmanager\Event\AfterExtensionStaticDatabaseContentHasBeenImportedEvent;
 use TYPO3\CMS\Extensionmanager\Event\AvailableActionsForExtensionEvent;
 
 /**
@@ -54,9 +55,9 @@ class PackageEventListener extends AbstractEventListener
     }
 
     /**
-     * @param AfterExtensionDatabaseContentHasBeenImportedEvent $event
+     * @param AfterExtensionStaticDatabaseContentHasBeenImportedEvent $event
      */
-    public function emitAfterExtensionStaticSqlImportSignal(AfterExtensionDatabaseContentHasBeenImportedEvent $event)
+    public function emitAfterExtensionStaticSqlImportSignal(AfterExtensionStaticDatabaseContentHasBeenImportedEvent $event)
     {
 
     }

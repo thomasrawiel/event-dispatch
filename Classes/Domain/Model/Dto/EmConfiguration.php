@@ -2,9 +2,6 @@
 
 namespace TRAW\EventDispatch\Domain\Model\Dto;
 
-use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-
 /**
  * This file is part of the "event_dispatch" Extension for TYPO3 CMS.
  *
@@ -15,7 +12,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 /**
  * Extension Manager configuration
  */
-class EmConfiguration
+class EmConfiguration extends AbstractEmConfiguration
 {
     /**
      * @var int
@@ -82,34 +79,6 @@ class EmConfiguration
      * @var int
      */
     protected int $packagesMayHaveChanged = 0;
-
-    /**
-     * Fill the properties properly
-     *
-     * @param array $configuration em configuration
-     */
-    public function __construct(array $configuration = [])
-    {
-        if (empty($configuration)) {
-            try {
-                $extensionConfiguration = GeneralUtility::makeInstance(ExtensionConfiguration::class);
-                $configuration = $extensionConfiguration->get('event_dispatch');
-            } catch (\Exception $exception) {
-                // do nothing
-            }
-        }
-        foreach ($configuration as $key => $setting) {
-            if (is_array($setting)) {
-                foreach ($setting as $subCategory => $value) {
-                    $this->addPropertyIfExists($subCategory, $value);
-                }
-            } else {
-                $this->addPropertyIfExists($key, $setting);
-            }
-
-
-        }
-    }
 
     /**
      * @return int
@@ -238,17 +207,4 @@ class EmConfiguration
     {
         return $this->afterPackageDeactivation;
     }
-
-    /**
-     * @param $propertyName
-     * @param $propertyValue
-     */
-    protected function addPropertyIfExists(string $propertyName, $propertyValue)
-    {
-        if (property_exists(__CLASS__, $propertyName)) {
-            $this->$propertyName = $propertyValue;
-        }
-    }
-
-
 }

@@ -16,7 +16,7 @@ class BackendLoginHook extends AbstractHook
     public function dispatch(array $backendUser)
     {
         if($this->settings->getBackendUserLogin() && is_array($backendUser['user'])) {
-            $this->triggerEvent(new BackendUserLoginEvent($backendUser));
+            $this->dispatchEvent(new BackendUserLoginEvent($backendUser));
         }
     }
 }

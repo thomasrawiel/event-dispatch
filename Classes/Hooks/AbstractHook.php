@@ -20,19 +20,24 @@ abstract class AbstractHook
     protected EmConfiguration $settings;
 
     /**
+     * @var EventDispatcher
+     */
+    protected EventDispatcher $eventDispatcher;
+
+    /**
      * AbstractHook constructor.
      */
     public function __construct()
     {
         $this->settings = SettingsService::getEmSettings();
+        $this->eventDispatcher = GeneralUtility::makeInstance(EventDispatcher::class);
     }
 
     /**
      * @param AbstractEvent $event
      */
-    protected function triggerEvent(AbstractEvent $event)
+    protected function dispatchEvent(AbstractEvent $event)
     {
-        $eventDispatcher = GeneralUtility::makeInstance(EventDispatcher::class);
-        $eventDispatcher->dispatch($event);
+        $this->eventDispatcher->dispatch($event);
     }
 }
