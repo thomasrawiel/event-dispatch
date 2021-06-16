@@ -30,4 +30,8 @@ class DatabaseEventListener extends AbstractEventListener
     public function moveRecord(MoveRecordEvent $event)
     {
     }
+
+    public function eventListenerIsActive(): bool
+    {
+    }
 }

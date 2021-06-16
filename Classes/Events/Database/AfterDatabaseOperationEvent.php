@@ -29,9 +29,11 @@ class AfterDatabaseOperationEvent extends AbstractEvent
      */
     protected array $fieldArray;
     /**
-     * @var
+     * @var \TYPO3\CMS\Core\DataHandling\DataHandler
      */
     protected \TYPO3\CMS\Core\DataHandling\DataHandler $pObj;
+
+    protected string $type = 'afterDatabaseOperation';
 
     /**
      * AfterDatabaseOperationEvent constructor.

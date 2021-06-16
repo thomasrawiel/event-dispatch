@@ -12,6 +12,8 @@ class BackendUserLoginEvent extends AbstractEvent
 {
     protected array $backendUser;
 
+    protected string $type = 'backendUserLogin';
+
     /**
      * BackendLoginEvent constructor.
      * @param array $backendUser

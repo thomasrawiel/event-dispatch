@@ -85,4 +85,9 @@ class PackageEventListener extends AbstractEventListener
     {
 
     }
+
+    public function eventListenerIsActive(): bool
+    {
+        // TODO: Implement eventListenerIsActive() method.
+    }
 }

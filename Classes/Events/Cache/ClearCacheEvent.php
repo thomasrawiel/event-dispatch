@@ -17,6 +17,8 @@ class ClearCacheEvent extends AbstractEvent
      * @var array
      */
     protected array $params;
+
+    protected string $type = 'clearCache';
     /**
      * @var DataHandler
      */

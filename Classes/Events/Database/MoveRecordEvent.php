@@ -14,6 +14,10 @@ use TYPO3\CMS\Core\DataHandling\DataHandler;
 class MoveRecordEvent extends AbstractEvent
 {
     /**
+     * @var string
+     */
+    protected string $type = 'moveRecord';
+    /**
      * @var
      */
     protected $table;

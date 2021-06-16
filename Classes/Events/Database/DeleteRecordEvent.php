@@ -16,6 +16,10 @@ class DeleteRecordEvent extends AbstractEvent
     /**
      * @var string
      */
+    protected string $type = 'deleteRecord';
+    /**
+     * @var string
+     */
     protected string $table;
     /**
      * @var int
@@ -29,6 +33,7 @@ class DeleteRecordEvent extends AbstractEvent
      * @var bool|mixed|null
      */
     protected ?bool $recordWasDeleted;
+
     /**
      * @var DataHandler
      */

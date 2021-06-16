@@ -7,7 +7,7 @@ namespace TRAW\EventDispatch\Events;
 use TRAW\EventDispatch\Domain\Model\Dto\EmConfiguration;
 use TRAW\EventDispatch\Service\SettingsService;
 
-abstract class AbstractEventListener
+abstract class AbstractEventListener implements EventListenerInterface
 {
     /**
      * @var EmConfiguration
