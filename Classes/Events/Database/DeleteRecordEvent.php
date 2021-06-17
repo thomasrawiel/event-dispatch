@@ -41,13 +41,14 @@ class DeleteRecordEvent extends AbstractEvent
 
     /**
      * DeleteRecordEvent constructor.
+     * @param $backendUser
      * @param $table
      * @param $id
      * @param $recordToDelete
      * @param null $recordWasDeleted
      * @param DataHandler $pObj
      */
-    public function __construct(array $backendUser, $table, $id, $recordToDelete, $recordWasDeleted = NULL, DataHandler $pObj)
+    public function __construct($backendUser, $table, $id, $recordToDelete, $recordWasDeleted = NULL, DataHandler $pObj)
     {
         parent::__construct($backendUser);
         $this->table = $table;

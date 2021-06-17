@@ -50,7 +50,7 @@ class BackendUserInfo
     /**
      * @return int
      */
-    public function getAdmin(): intx
+    public function getAdmin(): int
     {
         return $this->admin;
     }
