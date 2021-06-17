@@ -13,6 +13,9 @@
             <trans-unit id="settings.category.packages">
                 <source>Packages</source>
             </trans-unit>
+            <trans-unit id="settings.category.cache">
+                <source>Cache</source>
+            </trans-unit>
             <trans-unit id="settings.tcemain">
                 <source>asdf</source>
             </trans-unit>

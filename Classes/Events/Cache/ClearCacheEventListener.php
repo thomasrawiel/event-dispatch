@@ -11,12 +11,9 @@ use TRAW\EventDispatch\Events\AbstractEventListener;
 class ClearCacheEventListener extends AbstractEventListener
 {
     /**
-     * @param ClearCacheEvent $event
+     * @var string
      */
-    public function __invoke(ClearCacheEvent $event)
-    {
-
-    }
+    protected string $expectedEventClass = ClearCacheEvent::class;
 
     /**
      * @return bool

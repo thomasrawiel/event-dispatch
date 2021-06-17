@@ -49,9 +49,6 @@ class TCEmainHook extends AbstractHook
      */
     public function processDatamap_preProcessFieldArray(array $incomingFieldArray, string $table, $id, DataHandler $dataHandler)
     {
-        if ($this->settings->getPreProcessFieldArray()) {
-            $this->dispatchEvent(new PreProcessFieldArrayEvent($incomingFieldArray, $table, $id, $dataHandler));
-        }
     }
 
     /**
@@ -63,9 +60,6 @@ class TCEmainHook extends AbstractHook
      */
     public function processDatamap_postProcessFieldArray(string $status, string $table, $id, array $fieldArray, DataHandler $dataHandler)
     {
-        if ($this->settings->getPostProcessFieldArray()) {
-            $this->dispatchEvent(new PostProcessFieldArrayEvent($status, $table, $id, $fieldArray, $dataHandler));
-        }
     }
 
     /**
@@ -77,9 +71,6 @@ class TCEmainHook extends AbstractHook
      */
     public function processCmdmap_postProcess(string $command, string $table, $recordId, $commandValue, DataHandler $dataHandler)
     {
-        if ($this->settings->getPostProcess()) {
-            $this->dispatchEvent(new PostProcessEvent($command, $table, $recordId, $commandValue, $dataHandler));
-        }
     }
 
     /**
@@ -91,7 +82,7 @@ class TCEmainHook extends AbstractHook
      */
     public function processDatamap_afterDatabaseOperations($status, $table, $id, $fieldArray, DataHandler &$pObj)
     {
-        if ($this->settings->getAfterAllDatabaseOperations()) {
+        if ($this->settings->getAfterDatabaseOperation()) {
             $this->dispatchEvent(new AfterDatabaseOperationEvent($status, $table, $id, $fieldArray, $pObj));
         }
     }

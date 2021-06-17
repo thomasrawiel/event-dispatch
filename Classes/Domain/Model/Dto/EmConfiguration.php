@@ -30,7 +30,7 @@ class EmConfiguration extends AbstractEmConfiguration
     /**
      * @var int
      */
-    protected int $afterAllDatabaseOperations = 0;
+    protected int $afterDatabaseOperation = 0;
     /**
      * @var int
      */
@@ -123,9 +123,9 @@ class EmConfiguration extends AbstractEmConfiguration
     /**
      * @return int
      */
-    public function getAfterAllDatabaseOperations(): int
+    public function getAfterDatabaseOperation(): int
     {
-        return $this->afterAllDatabaseOperations;
+        return $this->afterDatabaseOperation;
     }
 
     /**

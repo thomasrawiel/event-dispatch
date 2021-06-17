@@ -15,14 +15,8 @@ cache {
 }
 
 database {
-    # cat=database; type=boolean; label=Pre Process Field Array
-    preProcessFieldArray = 0
-    # cat=database; type=boolean; label=Post Process
-    postProcess = 0
-    # cat=database; type=boolean; label=Post Process Field Array
-    postProcessFieldArray = 0
-    # cat=database; type=boolean; label=After all database operations
-    afterAllDatabaseOperations = 0
+    # cat=database; type=boolean; label=After database operations
+    afterDatabaseOperation = 0
     # cat=database; type=boolean; label=Delete Records
     deleteRecord = 0
     # cat=database; type=boolean; label=Move records

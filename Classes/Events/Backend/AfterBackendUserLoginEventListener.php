@@ -10,13 +10,7 @@ use TRAW\EventDispatch\Events\AbstractEventListener;
  */
 class AfterBackendUserLoginEventListener extends AbstractEventListener
 {
-    /**
-     * @param BackendUserLoginEvent $event
-     */
-    public function __invoke(BackendUserLoginEvent $event)
-    {
-    }
-
+    protected string $expectedEventClass = AfterBackendUserLoginEvent::class;
     /**
      * @return bool
      */

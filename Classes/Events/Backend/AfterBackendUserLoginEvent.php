@@ -8,7 +8,7 @@ use TRAW\EventDispatch\Events\AbstractEvent;
  * Class BackendLoginEvent
  * @package TRAW\EventDispatch\Event
  */
-class BackendUserLoginEvent extends AbstractEvent
+class AfterBackendUserLoginEvent extends AbstractEvent
 {
     protected array $backendUser;
 

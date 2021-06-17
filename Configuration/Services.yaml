@@ -36,36 +36,25 @@ services:
   TRAW\EventDispatch\Events\Backend\AfterBackendUserLoginEventListener:
     tags:
       - name: event.listener
-        identifier: 'backendLogin'
-        event: TRAW\EventDispatch\Events\Backend\BackendUserLoginEvent
+        identifier: 'traw-backendLogin'
+        event: TRAW\EventDispatch\Events\Backend\AfterBackendUserLoginEvent
   TRAW\EventDispatch\Events\Cache\ClearCacheEventListener:
     tags:
       - name: event.listener
-        identifier: 'clearCache'
+        identifier: 'traw-clearCache'
         event: TRAW\EventDispatch\Events\Cache\ClearCacheEvent
-  TRAW\EventDispatch\Events\Database\DatabaseEventListener:
+  TRAW\EventDispatch\Events\Database\AfterDatabaseOperationEventListener:
     tags:
       - name: event.listener
-        identifer: 'traw-database'
-        method: 'afterDatabaseOperation'
+        identifer: 'traw-afterDatabaseOperation'
         event: TRAW\EventDispatch\Events\Database\AfterDatabaseOperationEvent
+  TRAW\EventDispatch\Events\Database\DeleteRecordEventListener:
+    tags:
       - name: event.listener
-        identifer: 'traw-database'
-        method: 'deleteRecord'
+        identifer: 'traw-deleteRecord'
         event: TRAW\EventDispatch\Events\Database\DeleteRecordEvent
+  TRAW\EventDispatch\Events\Database\MoveRecordEventListener:
+    tags:
       - name: event.listener
-        identifier: 'traw-database'
-        method: 'moveRecord'
+        identifier: 'traw-moveRecord'
         event: TRAW\EventDispatch\Events\Database\MoveRecordEvent
-      - name: event.listener
-        identifier: 'traw-database'
-        method: 'postProcess'
-        event: TRAW\EventDispatch\Events\Database\PostProcessEvent
-      - name: event.listener
-        identifier: 'traw-database'
-        method: 'postProcessFieldArray'
-        event: TRAW\EventDispatch\Events\Database\PostProcessFieldArrayEvent
-      - name: event.listener
-        identifier: 'traw-database'
-        method: 'preProcessFieldArray'
-        event: TRAW\EventDispatch\Events\Database\PreProcessFieldArrayEvent
