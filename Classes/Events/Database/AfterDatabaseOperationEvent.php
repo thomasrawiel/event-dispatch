@@ -43,8 +43,9 @@ class AfterDatabaseOperationEvent extends AbstractEvent
      * @param array $fieldArray
      * @param \TYPO3\CMS\Core\DataHandling\DataHandler $pObj
      */
-    public function __construct($status, $table, $id, array $fieldArray, \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj)
+    public function __construct($backendUser, $status, $table, $id, array $fieldArray, \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj)
     {
+        parent::__construct($backendUser);
         $this->status = $status;
         $this->table = $table;
         $this->id = $id;

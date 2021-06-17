@@ -27,6 +27,8 @@ use TYPO3\CMS\Core\DataHandling\DataHandler;
  */
 class TCEmainHook extends AbstractHook
 {
+
+
     /**
      * @param string $table
      * @param int $id
@@ -37,40 +39,8 @@ class TCEmainHook extends AbstractHook
     public function processCmdmap_deleteAction(string $table, int $id, array $recordToDelete, ?bool $recordWasDeleted, DataHandler &$pObj)
     {
         if ($this->settings->getDeleteRecord()) {
-            $this->dispatchEvent(new DeleteRecordEvent($table, $id, $recordToDelete, $recordWasDeleted, $pObj));
+            $this->dispatchEvent(new DeleteRecordEvent($this->getBeUserInfo(), $table, $id, $recordToDelete, $recordWasDeleted, $pObj));
         }
-    }
-
-    /**
-     * @param array $incomingFieldArray
-     * @param string $table
-     * @param $id
-     * @param DataHandler $dataHandler
-     */
-    public function processDatamap_preProcessFieldArray(array $incomingFieldArray, string $table, $id, DataHandler $dataHandler)
-    {
-    }
-
-    /**
-     * @param string $status
-     * @param string $table
-     * @param $id
-     * @param array $fieldArray
-     * @param DataHandler $dataHandler
-     */
-    public function processDatamap_postProcessFieldArray(string $status, string $table, $id, array $fieldArray, DataHandler $dataHandler)
-    {
-    }
-
-    /**
-     * @param string $command
-     * @param string $table
-     * @param $recordId
-     * @param $commandValue
-     * @param DataHandler $dataHandler
-     */
-    public function processCmdmap_postProcess(string $command, string $table, $recordId, $commandValue, DataHandler $dataHandler)
-    {
     }
 
     /**
@@ -83,7 +53,7 @@ class TCEmainHook extends AbstractHook
     public function processDatamap_afterDatabaseOperations($status, $table, $id, $fieldArray, DataHandler &$pObj)
     {
         if ($this->settings->getAfterDatabaseOperation()) {
-            $this->dispatchEvent(new AfterDatabaseOperationEvent($status, $table, $id, $fieldArray, $pObj));
+            $this->dispatchEvent(new AfterDatabaseOperationEvent($this->getBeUserInfo(), $status, $table, $id, $fieldArray, $pObj));
         }
     }
 
@@ -98,7 +68,7 @@ class TCEmainHook extends AbstractHook
     public function moveRecord_firstElementPostProcess($table, $recordId, $destinationPid, array $movedRecord, array $updatedFields, DataHandler $dataHandler)
     {
         if ($this->settings->getMoveRecord()) {
-            $this->dispatchEvent(new MoveRecordEvent($table, $recordId, $destinationPid, null, $movedRecord, $updatedFields, $dataHandler));
+            $this->dispatchEvent(new MoveRecordEvent($this->getBeUserInfo(), $table, $recordId, $destinationPid, null, $movedRecord, $updatedFields, $dataHandler));
         }
     }
 
@@ -114,7 +84,7 @@ class TCEmainHook extends AbstractHook
     public function moveRecord_afterAnotherElementPostProcess($table, $recordId, $destinationPid, $originalDestinationPid, array $movedRecord, array $updatedFields, DataHandler $dataHandler)
     {
         if ($this->settings->getMoveRecord()) {
-            $this->dispatchEvent(new MoveRecordEvent($table, $recordId, $destinationPid, $originalDestinationPid, $movedRecord, $updatedFields, $dataHandler));
+            $this->dispatchEvent(new MoveRecordEvent($this->getBeUserInfo(), $table, $recordId, $destinationPid, $originalDestinationPid, $movedRecord, $updatedFields, $dataHandler));
         }
     }
 
@@ -125,7 +95,7 @@ class TCEmainHook extends AbstractHook
     public function clearCachePostProc(array &$params, DataHandler &$pObj)
     {
         if ($this->settings->getClearCache()) {
-            $this->dispatchEvent(new ClearCacheEvent($params, $pObj));
+            $this->dispatchEvent(new ClearCacheEvent($this->getBeUserInfo(), $params, $pObj));
         }
     }
 }

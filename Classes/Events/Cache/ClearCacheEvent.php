@@ -29,8 +29,9 @@ class ClearCacheEvent extends AbstractEvent
      * @param array $params
      * @param DataHandler $pObj
      */
-    public function __construct(array $params, DataHandler $pObj)
+    public function __construct(array $backendUser, array $params, DataHandler $pObj)
     {
+        parent::__construct($backendUser);
         $this->params = $params;
         $this->pObj = $pObj;
     }

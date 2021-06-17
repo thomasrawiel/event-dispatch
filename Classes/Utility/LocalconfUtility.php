@@ -41,7 +41,10 @@ class LocalconfUtility
         }
 
         $this->registerTCEMainHook();
-        $this->registerClearCacheHook();
+
+        if ($this->emConfiguration->getClearCache()) {
+            $this->registerClearCacheHook();
+        }
     }
 
     /**

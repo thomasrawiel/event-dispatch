@@ -61,8 +61,9 @@ class MoveRecordEvent extends AbstractEvent
      * @param $updatedFields
      * @param $dataHandler
      */
-    public function __construct($table, $recordId, $destinationPid, $originalDestinationPid, $movedRecord, $updatedFields, $dataHandler)
+    public function __construct($backendUser, $table, $recordId, $destinationPid, $originalDestinationPid, $movedRecord, $updatedFields, $dataHandler)
     {
+        parent::__construct($backendUser);
         $this->table = $table;
         $this->recordId = $recordId;
         $this->destinationPid = $destinationPid;

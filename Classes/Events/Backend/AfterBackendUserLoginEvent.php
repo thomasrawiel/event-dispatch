@@ -10,24 +10,5 @@ use TRAW\EventDispatch\Events\AbstractEvent;
  */
 class AfterBackendUserLoginEvent extends AbstractEvent
 {
-    protected array $backendUser;
-
     protected string $type = 'backendUserLogin';
-
-    /**
-     * BackendLoginEvent constructor.
-     * @param array $backendUser
-     */
-    public function __construct(array $backendUser)
-    {
-        $this->backendUser = $backendUser;
-    }
-
-    /**
-     * @return array
-     */
-    public function getBackendUser(): array
-    {
-        return $this->backendUser;
-    }
 }

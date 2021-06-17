@@ -2,6 +2,7 @@
 
 namespace TRAW\EventDispatch\Hooks;
 
+use TRAW\EventDispatch\Domain\Model\BackendUserInfo;
 use TRAW\EventDispatch\Events\Backend\AfterBackendUserLoginEvent;
 
 /**
@@ -15,7 +16,7 @@ class BackendLoginHook extends AbstractHook
      */
     public function dispatch(array $backendUser)
     {
-        if($this->settings->getBackendUserLogin() && is_array($backendUser['user'])) {
+        if ($this->settings->getBackendUserLogin() && is_array($backendUser['user'])) {
             $this->dispatchEvent(new AfterBackendUserLoginEvent($backendUser));
         }
     }
