@@ -4,6 +4,9 @@
 namespace TRAW\EventDispatch\Domain\Model;
 
 
+use TYPO3\CMS\Core\Http\NormalizedParams;
+use TYPO3\CMS\Core\Http\ServerRequestFactory;
+
 /**
  * Class BackendUserInfo
  * @package TRAW\EventDispatch\Domain\Model
@@ -28,6 +31,25 @@ class BackendUserInfo
     protected string $realName;
 
     /**
+     * @var string|mixed
+     */
+    protected string $remoteAddress;
+
+    /**
+     * @var string|mixed
+     */
+    protected string $siteName;
+
+    /**
+     * @var string
+     */
+    protected string $httpUserAgent;
+    /**
+     * @var string
+     */
+    protected string $httpAcceptLanguage;
+
+    /**
      * BackendUserInfo constructor.
      * @param array $backendUser
      */
@@ -37,6 +59,50 @@ class BackendUserInfo
         $this->admin = $backendUser['admin'];
         $this->email = $backendUser['email'];
         $this->realName = $backendUser['realName'];
+
+        $request = $GLOBALS['TYPO3_REQUEST'] ?? ServerRequestFactory::fromGlobals();
+        $normalizedParams = $request->getAttribute('normalizedParams');
+
+        if (!$normalizedParams instanceof NormalizedParams) {
+            $normalizedParams = NormalizedParams::createFromServerParams($_SERVER);
+        }
+        $this->remoteAddress = $normalizedParams->getRemoteAddress();
+        $this->httpAcceptLanguage = $normalizedParams->getHttpAcceptLanguage();
+        $this->httpUserAgent = $normalizedParams->getHttpUserAgent();
+
+        $this->siteName = $GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'];
+    }
+
+    /**
+     * @return string
+     */
+    public function getHttpUserAgent(): string
+    {
+        return $this->httpUserAgent;
+    }
+
+    /**
+     * @return string
+     */
+    public function getHttpAcceptLanguage(): string
+    {
+        return $this->httpAcceptLanguage;
+    }
+
+    /**
+     * @return mixed|string
+     */
+    public function getRemoteAddress()
+    {
+        return $this->remoteAddress;
+    }
+
+    /**
+     * @return mixed|string
+     */
+    public function getSiteName()
+    {
+        return $this->siteName;
     }
 
     /**
@@ -70,4 +136,5 @@ class BackendUserInfo
     {
         return $this->realName;
     }
+
 }
