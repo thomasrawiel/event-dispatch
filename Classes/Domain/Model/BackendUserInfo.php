@@ -1,8 +1,6 @@
 <?php
 
-
 namespace TRAW\EventDispatch\Domain\Model;
-
 
 use TYPO3\CMS\Core\Http\NormalizedParams;
 use TYPO3\CMS\Core\Http\ServerRequestFactory;
@@ -29,17 +27,14 @@ class BackendUserInfo
      * @var string
      */
     protected string $realName;
-
     /**
      * @var string|mixed
      */
     protected string $remoteAddress;
-
     /**
      * @var string|mixed
      */
     protected string $siteName;
-
     /**
      * @var string
      */
@@ -112,7 +107,6 @@ class BackendUserInfo
         $this->host = $normalizedParams->getRequestHost();
         $this->siteName = $GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'];
 
-        $this->isAdmin = (booL)$backendUser['admin'];
         $this->isSystemMaintainer = in_array((int)$backendUser['uid'], $GLOBALS['TYPO3_CONF_VARS']['SYS']['systemMaintainers']);
     }
 

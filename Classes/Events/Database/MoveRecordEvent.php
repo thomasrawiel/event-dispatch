@@ -4,6 +4,7 @@
 namespace TRAW\EventDispatch\Events\Database;
 
 
+use TRAW\EventDispatch\Domain\Model\BackendUserInfo;
 use TRAW\EventDispatch\Events\AbstractEvent;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 
@@ -29,7 +30,6 @@ class MoveRecordEvent extends AbstractEvent
      * @var
      */
     protected $destinationPid;
-
     /**
      * @var
      */
@@ -53,15 +53,17 @@ class MoveRecordEvent extends AbstractEvent
 
     /**
      * MoveRecordEvent constructor.
-     * @param $table
-     * @param $recordId
-     * @param $destinationPid
-     * @param $originalDestinationPid
-     * @param $movedRecord
-     * @param $updatedFields
-     * @param $dataHandler
+     *
+     * @param BackendUserInfo $backendUser
+     * @param                 $table
+     * @param                 $recordId
+     * @param                 $destinationPid
+     * @param                 $originalDestinationPid
+     * @param                 $movedRecord
+     * @param                 $updatedFields
+     * @param                 $dataHandler
      */
-    public function __construct($backendUser, $table, $recordId, $destinationPid, $originalDestinationPid, $movedRecord, $updatedFields, $dataHandler)
+    public function __construct(BackendUserInfo $backendUser, $table, $recordId, $destinationPid, $originalDestinationPid, $movedRecord, $updatedFields, $dataHandler)
     {
         parent::__construct($backendUser);
         $this->table = $table;

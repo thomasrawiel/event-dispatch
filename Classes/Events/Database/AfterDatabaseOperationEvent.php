@@ -4,7 +4,9 @@
 namespace TRAW\EventDispatch\Events\Database;
 
 
+use TRAW\EventDispatch\Domain\Model\BackendUserInfo;
 use TRAW\EventDispatch\Events\AbstractEvent;
+use TYPO3\CMS\Core\DataHandling\DataHandler;
 
 /**
  * Class AfterDatabaseOperationEvent
@@ -37,13 +39,15 @@ class AfterDatabaseOperationEvent extends AbstractEvent
 
     /**
      * AfterDatabaseOperationEvent constructor.
-     * @param $status
-     * @param $table
-     * @param $id
-     * @param array $fieldArray
-     * @param \TYPO3\CMS\Core\DataHandling\DataHandler $pObj
+     *
+     * @param BackendUserInfo $backendUser
+     * @param                 $status
+     * @param                 $table
+     * @param                 $id
+     * @param array           $fieldArray
+     * @param DataHandler     $pObj
      */
-    public function __construct($backendUser, $status, $table, $id, array $fieldArray, \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj)
+    public function __construct(BackendUserInfo $backendUser, $status, $table, $id, array $fieldArray, \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj)
     {
         parent::__construct($backendUser);
         $this->status = $status;

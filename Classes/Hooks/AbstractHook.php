@@ -19,7 +19,6 @@ abstract class AbstractHook
      * @var EmConfiguration
      */
     protected EmConfiguration $settings;
-
     /**
      * @var EventDispatcher
      */

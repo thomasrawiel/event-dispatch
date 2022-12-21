@@ -15,9 +15,6 @@ use TRAW\EventDispatch\Events\Cache\ClearCacheEvent;
 use TRAW\EventDispatch\Events\Database\AfterDatabaseOperationEvent;
 use TRAW\EventDispatch\Events\Database\DeleteRecordEvent;
 use TRAW\EventDispatch\Events\Database\MoveRecordEvent;
-use TRAW\EventDispatch\Events\Database\PostProcessEvent;
-use TRAW\EventDispatch\Events\Database\PostProcessFieldArrayEvent;
-use TRAW\EventDispatch\Events\Database\PreProcessFieldArrayEvent;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 
 
