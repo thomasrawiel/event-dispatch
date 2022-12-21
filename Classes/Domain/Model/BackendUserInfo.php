@@ -50,7 +50,47 @@ class BackendUserInfo
     protected string $httpAcceptLanguage;
 
     /**
+     * @return string
+     */
+    public function getHost(): string
+    {
+        return $this->host;
+    }
+
+    /**
+     * @var string
+     */
+    protected string $host;
+
+    /**
+     * @var bool
+     */
+    protected bool $isAdmin = false;
+
+    /**
+     * @var bool
+     */
+    protected bool $isSystemMaintainer = false;
+
+    /**
+     * @return bool
+     */
+    public function isAdmin(): bool
+    {
+        return $this->isAdmin;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSystemMaintainer(): bool
+    {
+        return $this->isSystemMaintainer;
+    }
+
+    /**
      * BackendUserInfo constructor.
+     *
      * @param array $backendUser
      */
     public function __construct(array $backendUser)
@@ -69,8 +109,11 @@ class BackendUserInfo
         $this->remoteAddress = $normalizedParams->getRemoteAddress();
         $this->httpAcceptLanguage = $normalizedParams->getHttpAcceptLanguage();
         $this->httpUserAgent = $normalizedParams->getHttpUserAgent();
-
+        $this->host = $normalizedParams->getRequestHost();
         $this->siteName = $GLOBALS['TYPO3_CONF_VARS']['SYS']['sitename'];
+
+        $this->isAdmin = (booL)$backendUser['admin'];
+        $this->isSystemMaintainer = in_array((int)$backendUser['uid'], $GLOBALS['TYPO3_CONF_VARS']['SYS']['systemMaintainers']);
     }
 
     /**
