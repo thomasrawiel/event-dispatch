@@ -1,10 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace TRAW\EventDispatch\Events\Database;
 
 /**
  * Class DeleteRecordEventListener
- * @package TRAW\EventDispatch\Events\Database
  */
 class DeleteRecordEventListener extends \TRAW\EventDispatch\Events\AbstractEventListener
 {

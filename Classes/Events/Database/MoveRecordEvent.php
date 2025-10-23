@@ -1,8 +1,7 @@
 <?php
-
+declare(strict_types=1);
 
 namespace TRAW\EventDispatch\Events\Database;
-
 
 use TRAW\EventDispatch\Domain\Model\BackendUserInfo;
 use TRAW\EventDispatch\Events\AbstractEvent;
@@ -10,7 +9,6 @@ use TYPO3\CMS\Core\DataHandling\DataHandler;
 
 /**
  * Class MoveRecordEvent
- * @package TRAW\EventDispatch\Events\Database
  */
 class MoveRecordEvent extends AbstractEvent
 {
@@ -18,34 +16,6 @@ class MoveRecordEvent extends AbstractEvent
      * @var string
      */
     protected string $type = 'moveRecord';
-    /**
-     * @var
-     */
-    protected $table;
-    /**
-     * @var
-     */
-    protected $recordId;
-    /**
-     * @var
-     */
-    protected $destinationPid;
-    /**
-     * @var
-     */
-    protected $originalDestinationPid;
-    /**
-     * @var array
-     */
-    protected array $movedRecord;
-    /**
-     * @var array
-     */
-    protected array $updatedFields;
-    /**
-     * @var DataHandler
-     */
-    protected DataHandler $dataHandler;
     /**
      * @var bool
      */
@@ -62,18 +32,26 @@ class MoveRecordEvent extends AbstractEvent
      * @param                 $movedRecord
      * @param                 $updatedFields
      * @param                 $dataHandler
+     * @param mixed[] $movedRecord
+     * @param mixed[] $updatedFields
+     * @param DataHandler $dataHandler
      */
-    public function __construct(BackendUserInfo $backendUser, $table, $recordId, $destinationPid, $originalDestinationPid, $movedRecord, $updatedFields, $dataHandler)
+    public function __construct(BackendUserInfo $backendUser, /**
+     * @var
+     */
+    protected $table, /**
+     * @var
+     */
+    protected $recordId, /**
+     * @var
+     */
+    protected $destinationPid, /**
+     * @var
+     */
+    protected $originalDestinationPid, protected array $movedRecord, protected array $updatedFields, protected DataHandler $dataHandler)
     {
         parent::__construct($backendUser);
-        $this->table = $table;
-        $this->recordId = $recordId;
-        $this->destinationPid = $destinationPid;
-        $this->originalDestinationPid = $originalDestinationPid;
-        $this->movedRecord = $movedRecord;
-        $this->updatedFields = $updatedFields;
-        $this->dataHandler = $dataHandler;
-        $this->firstElement = is_null($originalDestinationPid);
+        $this->firstElement = is_null($this->originalDestinationPid);
     }
 
     /**
@@ -123,6 +101,5 @@ class MoveRecordEvent extends AbstractEvent
     {
         return $this->dataHandler;
     }
-
 
 }

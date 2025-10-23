@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace TRAW\EventDispatch\Domain\Model;
 
@@ -7,7 +8,6 @@ use TYPO3\CMS\Core\Http\ServerRequestFactory;
 
 /**
  * Class BackendUserInfo
- * @package TRAW\EventDispatch\Domain\Model
  */
 class BackendUserInfo
 {

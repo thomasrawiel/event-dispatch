@@ -1,10 +1,10 @@
 <?php
+declare(strict_types=1);
 
 namespace TRAW\EventDispatch\Events;
 
 /**
  * Interface EventListenerInterface
- * @package TRAW\EventDispatch\Events
  */
 interface EventListenerInterface
 {

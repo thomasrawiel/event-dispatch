@@ -1,15 +1,13 @@
 <?php
-
+declare(strict_types=1);
 
 namespace TRAW\EventDispatch\Events;
-
 
 use TRAW\EventDispatch\Domain\Model\Dto\EmConfiguration;
 use TRAW\EventDispatch\Service\SettingsService;
 
 /**
  * Class AbstractEventListener
- * @package TRAW\EventDispatch\Events
  */
 abstract class AbstractEventListener implements EventListenerInterface
 {
@@ -35,14 +33,14 @@ abstract class AbstractEventListener implements EventListenerInterface
      * @param AbstractEvent $event
      * @return mixed|void
      */
-    public function __invoke(AbstractEvent $event)
+    public function __invoke(AbstractEvent $event): void
     {
         //check if the event has the expected class
         //event class must extend AbstractEvent:class
         //note: using get_class instead of instanceof, because we want to compare with the sub class
         if ($this->eventListenerIsActive()
             && is_subclass_of($event, AbstractEvent::class)
-            && get_class($event) === $this->expectedEventClass
+            && $event::class === $this->expectedEventClass
         ) {
             $this->invokeEventAction($event);
         }
@@ -52,7 +50,5 @@ abstract class AbstractEventListener implements EventListenerInterface
      * @param AbstractEvent $event
      * @return mixed|void
      */
-    public function invokeEventAction(AbstractEvent $event)
-    {
-    }
+    public function invokeEventAction(AbstractEvent $event) {}
 }

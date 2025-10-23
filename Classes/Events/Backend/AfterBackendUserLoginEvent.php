@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace TRAW\EventDispatch\Events\Backend;
 
@@ -6,7 +7,6 @@ use TRAW\EventDispatch\Events\AbstractEvent;
 
 /**
  * Class BackendLoginEvent
- * @package TRAW\EventDispatch\Event
  */
 class AfterBackendUserLoginEvent extends AbstractEvent
 {

@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace TRAW\EventDispatch\Hooks;
 
@@ -17,15 +18,11 @@ use TRAW\EventDispatch\Events\Database\DeleteRecordEvent;
 use TRAW\EventDispatch\Events\Database\MoveRecordEvent;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 
-
 /**
  * Class TCEmainHook
- * @package TRAW\EventDispatch\Hooks
  */
 class TCEmainHook extends AbstractHook
 {
-
-
     /**
      * @param string $table
      * @param int $id
@@ -33,7 +30,7 @@ class TCEmainHook extends AbstractHook
      * @param bool|null $recordWasDeleted
      * @param DataHandler $pObj
      */
-    public function processCmdmap_deleteAction(string $table, int $id, array $recordToDelete, ?bool $recordWasDeleted, DataHandler &$pObj)
+    public function processCmdmap_deleteAction(string $table, int $id, array $recordToDelete, ?bool $recordWasDeleted, DataHandler &$pObj): void
     {
         if ($this->settings->getDeleteRecord()) {
             $this->dispatchEvent(new DeleteRecordEvent($this->getBeUserInfo(), $table, $id, $recordToDelete, $recordWasDeleted, $pObj));
@@ -47,7 +44,7 @@ class TCEmainHook extends AbstractHook
      * @param array $fieldArray
      * @param DataHandler $pObj
      */
-    public function processDatamap_afterDatabaseOperations($status, $table, $id, $fieldArray, DataHandler &$pObj)
+    public function processDatamap_afterDatabaseOperations($status, $table, $id, $fieldArray, DataHandler &$pObj): void
     {
         if ($this->settings->getAfterDatabaseOperation()) {
             $this->dispatchEvent(new AfterDatabaseOperationEvent($this->getBeUserInfo(), $status, $table, $id, $fieldArray, $pObj));
@@ -62,7 +59,7 @@ class TCEmainHook extends AbstractHook
      * @param array $updatedFields
      * @param DataHandler $dataHandler
      */
-    public function moveRecord_firstElementPostProcess($table, $recordId, $destinationPid, array $movedRecord, array $updatedFields, DataHandler $dataHandler)
+    public function moveRecord_firstElementPostProcess($table, $recordId, $destinationPid, array $movedRecord, array $updatedFields, DataHandler $dataHandler): void
     {
         if ($this->settings->getMoveRecord()) {
             $this->dispatchEvent(new MoveRecordEvent($this->getBeUserInfo(), $table, $recordId, $destinationPid, null, $movedRecord, $updatedFields, $dataHandler));
@@ -78,7 +75,7 @@ class TCEmainHook extends AbstractHook
      * @param array $updatedFields
      * @param DataHandler $dataHandler
      */
-    public function moveRecord_afterAnotherElementPostProcess($table, $recordId, $destinationPid, $originalDestinationPid, array $movedRecord, array $updatedFields, DataHandler $dataHandler)
+    public function moveRecord_afterAnotherElementPostProcess($table, $recordId, $destinationPid, $originalDestinationPid, array $movedRecord, array $updatedFields, DataHandler $dataHandler): void
     {
         if ($this->settings->getMoveRecord()) {
             $this->dispatchEvent(new MoveRecordEvent($this->getBeUserInfo(), $table, $recordId, $destinationPid, $originalDestinationPid, $movedRecord, $updatedFields, $dataHandler));
@@ -89,7 +86,7 @@ class TCEmainHook extends AbstractHook
      * @param array $params
      * @param DataHandler $pObj
      */
-    public function clearCachePostProc(array &$params, DataHandler &$pObj)
+    public function clearCachePostProc(array &$params, DataHandler &$pObj): void
     {
         if ($this->settings->getClearCache()) {
             $this->dispatchEvent(new ClearCacheEvent($this->getBeUserInfo(), $params, $pObj));

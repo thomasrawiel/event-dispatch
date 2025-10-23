@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace TRAW\EventDispatch\Events\Packages;
 
@@ -14,14 +15,13 @@ use TYPO3\CMS\Extensionmanager\Event\AvailableActionsForExtensionEvent;
 
 /**
  * Class PackageEventListener
- * @package TRAW\EventDispatch\Events\Packages
  */
 class PackageEventListener extends AbstractEventListener
 {
     /**
      * @param BeforePackageActivationEvent $event
      */
-    public function beforePackageActivation(BeforePackageActivationEvent $event)
+    public function beforePackageActivation(BeforePackageActivationEvent $event): void
     {
         if ($this->settings->getBeforePackageActivation()) {
             //
@@ -31,7 +31,7 @@ class PackageEventListener extends AbstractEventListener
     /**
      * @param AfterPackageActivationEvent $event
      */
-    public function afterPackageActivation(AfterPackageActivationEvent $event)
+    public function afterPackageActivation(AfterPackageActivationEvent $event): void
     {
         if ($this->settings->getAfterPackageActivation()) {
             //
@@ -41,50 +41,32 @@ class PackageEventListener extends AbstractEventListener
     /**
      * @param AfterPackageDeactivationEvent $event
      */
-    public function afterPackageDeactivation(AfterPackageDeactivationEvent $event)
-    {
-
-    }
+    public function afterPackageDeactivation(AfterPackageDeactivationEvent $event) {}
 
     /**
      * @param AfterExtensionDatabaseContentHasBeenImportedEvent $event
      */
-    public function emitAfterExtensionT3DImportSignal(AfterExtensionDatabaseContentHasBeenImportedEvent $event)
-    {
-
-    }
+    public function emitAfterExtensionT3DImportSignal(AfterExtensionDatabaseContentHasBeenImportedEvent $event) {}
 
     /**
      * @param AfterExtensionStaticDatabaseContentHasBeenImportedEvent $event
      */
-    public function emitAfterExtensionStaticSqlImportSignal(AfterExtensionStaticDatabaseContentHasBeenImportedEvent $event)
-    {
-
-    }
+    public function emitAfterExtensionStaticSqlImportSignal(AfterExtensionStaticDatabaseContentHasBeenImportedEvent $event) {}
 
     /**
      * @param AfterExtensionFilesHaveBeenImportedEvent $event
      */
-    public function emitAfterExtensionFileImportSignal(AfterExtensionFilesHaveBeenImportedEvent $event)
-    {
-
-    }
+    public function emitAfterExtensionFileImportSignal(AfterExtensionFilesHaveBeenImportedEvent $event) {}
 
     /**
      * @param AvailableActionsForExtensionEvent $event
      */
-    public function emitProcessActionsSignal(AvailableActionsForExtensionEvent $event)
-    {
-
-    }
+    public function emitProcessActionsSignal(AvailableActionsForExtensionEvent $event) {}
 
     /**
      * @param PackagesMayHaveChangedEvent $event
      */
-    public function packagesMayHaveChanged(PackagesMayHaveChangedEvent $event)
-    {
-
-    }
+    public function packagesMayHaveChanged(PackagesMayHaveChangedEvent $event) {}
 
     public function eventListenerIsActive(): bool
     {

@@ -1,8 +1,7 @@
 <?php
-
+declare(strict_types=1);
 
 namespace TRAW\EventDispatch\Events\Database;
-
 
 use TRAW\EventDispatch\Domain\Model\BackendUserInfo;
 use TRAW\EventDispatch\Events\AbstractEvent;
@@ -10,7 +9,6 @@ use TYPO3\CMS\Core\DataHandling\DataHandler;
 
 /**
  * Class DeleteRecordEvent
- * @package TRAW\EventDispatch\Event
  */
 class DeleteRecordEvent extends AbstractEvent
 {
@@ -18,27 +16,6 @@ class DeleteRecordEvent extends AbstractEvent
      * @var string
      */
     protected string $type = 'deleteRecord';
-    /**
-     * @var string
-     */
-    protected string $table;
-    /**
-     * @var int
-     */
-    protected int $id;
-    /**
-     * @var array
-     */
-    protected array $recordToDelete;
-    /**
-     * @var bool|mixed|null
-     */
-    protected ?bool $recordWasDeleted;
-
-    /**
-     * @var DataHandler
-     */
-    protected DataHandler $pObj;
 
     /**
      * DeleteRecordEvent constructor.
@@ -49,17 +26,14 @@ class DeleteRecordEvent extends AbstractEvent
      * @param                 $recordToDelete
      * @param null            $recordWasDeleted
      * @param DataHandler     $pObj
+     * @param string $table
+     * @param int $id
+     * @param mixed[] $recordToDelete
      */
-    public function __construct(BackendUserInfo $backendUser, $table, $id, $recordToDelete, $recordWasDeleted = NULL, DataHandler $pObj)
+    public function __construct(BackendUserInfo $backendUser, protected string $table, protected int $id, protected array $recordToDelete, protected ?bool $recordWasDeleted = null, protected ?DataHandler $pObj = null)
     {
         parent::__construct($backendUser);
-        $this->table = $table;
-        $this->id = $id;
-        $this->recordToDelete = $recordToDelete;
-        $this->recordWasDeleted = $recordWasDeleted;
-        $this->pObj = $pObj;
     }
-
 
     /**
      * @return string

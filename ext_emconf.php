@@ -1,4 +1,5 @@
 <?php
+
 $EM_CONF[$_EXTKEY] = [
     'title' => 'TYPO3 Event Dispatcher',
     'description' => 'Dispatch Events on actions',
@@ -6,11 +7,10 @@ $EM_CONF[$_EXTKEY] = [
     'author' => 'Thomas Rawiel',
     'author_email' => 'thomas.rawiel@gmail.com',
     'state' => 'experimental',
-    'clearCacheOnLoad' => 0,
     'version' => '0.0.1',
     'constraints' => [
         'depends' => [
-            'typo3' => '10.4.0-0.0.0',
+            'typo3' => '13.4.0-13.4.99',
         ],
         'conflicts' => [
         ],

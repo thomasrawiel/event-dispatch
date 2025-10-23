@@ -1,7 +1,7 @@
 <?php
 
 defined('TYPO3') or die('Access denied.');
-call_user_func(function($_EXTKEY = 'event_dispatch') {
+call_user_func(function ($_EXTKEY = 'event_dispatch') {
     $emConfiguration = \TRAW\EventDispatch\Service\SettingsService::getEmSettings();
 
     if ($emConfiguration->getBackendUserLogin()) {
@@ -23,7 +23,7 @@ call_user_func(function($_EXTKEY = 'event_dispatch') {
             ],
             'clearCachePostProc' => [
                 $_EXTKEY => \TRAW\EventDispatch\Hooks\TCEmainHook::class . '->clearCachePostProc',
-            ]
+            ],
         ]
     );
 });

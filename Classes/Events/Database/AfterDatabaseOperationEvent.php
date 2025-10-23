@@ -1,8 +1,7 @@
 <?php
-
+declare(strict_types=1);
 
 namespace TRAW\EventDispatch\Events\Database;
-
 
 use TRAW\EventDispatch\Domain\Model\BackendUserInfo;
 use TRAW\EventDispatch\Events\AbstractEvent;
@@ -10,31 +9,9 @@ use TYPO3\CMS\Core\DataHandling\DataHandler;
 
 /**
  * Class AfterDatabaseOperationEvent
- * @package TRAW\EventDispatch\Event
  */
 class AfterDatabaseOperationEvent extends AbstractEvent
 {
-    /**
-     * @var
-     */
-    protected $status;
-    /**
-     * @var
-     */
-    protected $table;
-    /**
-     * @var
-     */
-    protected $id;
-    /**
-     * @var array
-     */
-    protected array $fieldArray;
-    /**
-     * @var \TYPO3\CMS\Core\DataHandling\DataHandler
-     */
-    protected \TYPO3\CMS\Core\DataHandling\DataHandler $pObj;
-
     protected string $type = 'afterDatabaseOperation';
 
     /**
@@ -47,14 +24,18 @@ class AfterDatabaseOperationEvent extends AbstractEvent
      * @param array           $fieldArray
      * @param DataHandler     $pObj
      */
-    public function __construct(BackendUserInfo $backendUser, $status, $table, $id, array $fieldArray, \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj)
+    public function __construct(BackendUserInfo $backendUser, /**
+     * @var
+     */
+    protected $status, /**
+     * @var
+     */
+    protected $table, /**
+     * @var
+     */
+    protected $id, protected array $fieldArray, protected \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj)
     {
         parent::__construct($backendUser);
-        $this->status = $status;
-        $this->table = $table;
-        $this->id = $id;
-        $this->fieldArray = $fieldArray;
-        $this->pObj = $pObj;
     }
 
     /**

@@ -1,8 +1,7 @@
 <?php
-
+declare(strict_types=1);
 
 namespace TRAW\EventDispatch\Events\Cache;
-
 
 use TRAW\EventDispatch\Domain\Model\BackendUserInfo;
 use TRAW\EventDispatch\Events\AbstractEvent;
@@ -10,22 +9,13 @@ use TYPO3\CMS\Core\DataHandling\DataHandler;
 
 /**
  * Class ClearCacheEvent
- * @package TRAW\EventDispatch\Event
  */
 class ClearCacheEvent extends AbstractEvent
 {
     /**
-     * @var array
-     */
-    protected array $params;
-    /**
      * @var string
      */
     protected string $type = 'clearCache';
-    /**
-     * @var DataHandler
-     */
-    protected DataHandler $pObj;
 
     /**
      * ClearCacheEvent constructor.
@@ -34,11 +24,9 @@ class ClearCacheEvent extends AbstractEvent
      * @param array           $params
      * @param DataHandler     $pObj
      */
-    public function __construct(BackendUserInfo $backendUser, array $params, DataHandler $pObj)
+    public function __construct(BackendUserInfo $backendUser, protected array $params, protected DataHandler $pObj)
     {
         parent::__construct($backendUser);
-        $this->params = $params;
-        $this->pObj = $pObj;
     }
 
     /**

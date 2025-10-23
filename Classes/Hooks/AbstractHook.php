@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace TRAW\EventDispatch\Hooks;
 
@@ -11,7 +12,6 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
 
 /**
  * Class AbstractHook
- * @package TRAW\EventDispatch\Hooks
  */
 abstract class AbstractHook
 {

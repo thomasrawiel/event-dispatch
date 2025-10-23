@@ -1,4 +1,6 @@
 <?php
+declare(strict_types=1);
+
 namespace TRAW\EventDispatch\Service;
 
 use TRAW\EventDispatch\Domain\Model\Dto\EmConfiguration;

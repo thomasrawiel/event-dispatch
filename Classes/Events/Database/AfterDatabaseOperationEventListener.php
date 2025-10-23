@@ -1,5 +1,5 @@
 <?php
-
+declare(strict_types=1);
 
 namespace TRAW\EventDispatch\Events\Database;
 
@@ -7,7 +7,6 @@ use TRAW\EventDispatch\Events\AbstractEventListener;
 
 /**
  * Class AfterDatabaseOperationEventListener
- * @package TRAW\EventDispatch\Events\Database
  */
 class AfterDatabaseOperationEventListener extends AbstractEventListener
 {

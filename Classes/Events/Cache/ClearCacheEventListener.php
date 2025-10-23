@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace TRAW\EventDispatch\Events\Cache;
 
@@ -6,7 +7,6 @@ use TRAW\EventDispatch\Events\AbstractEventListener;
 
 /**
  * Class ClearCacheEventListener
- * @package TRAW\EventDispatch\Events\Cache
  */
 class ClearCacheEventListener extends AbstractEventListener
 {
