@@ -17,9 +17,6 @@
   "require": {
     "typo3/cms-core": "^10 || ^11"
   },
-  "replace": {
-    "traw/event-dispatch": "self.version"
-  },
   "extra": {
     "typo3/cms": {
       "extension-key": "event_dispatch"
