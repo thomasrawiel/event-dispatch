@@ -1,0 +1,60 @@
+services:
+  TRAW\EventDispatch\Events\Packages\PackageEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'traw-legacy-slot'
+        method: 'beforePackageActivation'
+        event: TYPO3\CMS\Core\Package\Event\BeforePackageActivationEvent
+      - name: event.listener
+        identifier: 'traw-legacy-slot'
+        method: 'afterPackageActivation'
+        event: TYPO3\CMS\Core\Package\Event\AfterPackageActivationEvent
+      - name: event.listener
+        identifier: 'traw-legacy-slot'
+        method: 'afterPackageDeactivation'
+        event: TYPO3\CMS\Core\Package\Event\AfterPackageDeactivationEvent
+      - name: event.listener
+        identifier: 'traw-legacy-slot'
+        method: 'emitAfterExtensionT3DImportSignal'
+        event: TYPO3\CMS\Extensionmanager\Event\AfterExtensionDatabaseContentHasBeenImportedEvent
+      - name: event.listener
+        identifier: 'traw-legacy-slot'
+        method: 'emitAfterExtensionStaticSqlImportSignal'
+        event: TYPO3\CMS\Extensionmanager\Event\AfterExtensionStaticDatabaseContentHasBeenImportedEvent
+      - name: event.listener
+        identifier: 'traw-legacy-slot'
+        method: 'emitAfterExtensionFileImportSignal'
+        event: TYPO3\CMS\Extensionmanager\Event\AfterExtensionFilesHaveBeenImportedEvent
+      - name: event.listener
+        identifier: 'traw-legacy-slot'
+        method: 'emitProcessActionsSignal'
+        event: TYPO3\CMS\Extensionmanager\Event\AvailableActionsForExtensionEvent
+      - name: event.listener
+        identifier: 'traw-legacy-slot'
+        method: 'packagesMayHaveChanged'
+        event: TYPO3\CMS\Core\Package\Event\PackagesMayHaveChangedEvent
+  TRAW\EventDispatch\Events\Backend\AfterBackendUserLoginEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'traw-backendLogin'
+        event: TRAW\EventDispatch\Events\Backend\AfterBackendUserLoginEvent
+  TRAW\EventDispatch\Events\Cache\ClearCacheEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'traw-clearCache'
+        event: TRAW\EventDispatch\Events\Cache\ClearCacheEvent
+  TRAW\EventDispatch\Events\Database\AfterDatabaseOperationEventListener:
+    tags:
+      - name: event.listener
+        identifer: 'traw-afterDatabaseOperation'
+        event: TRAW\EventDispatch\Events\Database\AfterDatabaseOperationEvent
+  TRAW\EventDispatch\Events\Database\DeleteRecordEventListener:
+    tags:
+      - name: event.listener
+        identifer: 'traw-deleteRecord'
+        event: TRAW\EventDispatch\Events\Database\DeleteRecordEvent
+  TRAW\EventDispatch\Events\Database\MoveRecordEventListener:
+    tags:
+      - name: event.listener
+        identifier: 'traw-moveRecord'
+        event: TRAW\EventDispatch\Events\Database\MoveRecordEvent
