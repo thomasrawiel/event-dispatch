@@ -20,6 +20,6 @@ class ClearCacheEventListener extends AbstractEventListener
      */
     public function eventListenerIsActive(): bool
     {
-        return $this->settings->getClearCache();
+        return (bool)$this->settings->getClearCache();
     }
 }

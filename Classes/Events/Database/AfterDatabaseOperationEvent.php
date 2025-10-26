@@ -24,16 +24,12 @@ class AfterDatabaseOperationEvent extends AbstractEvent
      * @param array           $fieldArray
      * @param DataHandler     $pObj
      */
-    public function __construct(BackendUserInfo $backendUser, /**
-     * @var
-     */
-    protected $status, /**
-     * @var
-     */
-    protected $table, /**
-     * @var
-     */
-    protected $id, protected array $fieldArray, protected \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj)
+    public function __construct(private readonly BackendUserInfo $backendUser, 
+                                private $status, 
+                                private $table,
+                                private       $id, 
+                                private array $fieldArray, 
+                                private \TYPO3\CMS\Core\DataHandling\DataHandler &$pObj)
     {
         parent::__construct($backendUser);
     }

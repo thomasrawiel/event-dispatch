@@ -47,7 +47,7 @@ class TCEmainHook extends AbstractHook
     public function processDatamap_afterDatabaseOperations($status, $table, $id, $fieldArray, DataHandler &$pObj): void
     {
         if ($this->settings->getAfterDatabaseOperation()) {
-            $this->dispatchEvent(new AfterDatabaseOperationEvent($this->getBeUserInfo(), $status, $table, $id, $fieldArray, $pObj));
+            $event = $this->dispatchEvent(new AfterDatabaseOperationEvent($this->getBeUserInfo(), $status, $table, $id, $fieldArray, $pObj));
         }
     }
 

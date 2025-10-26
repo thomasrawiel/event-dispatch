@@ -19,7 +19,7 @@ abstract class AbstractEvent implements EventInterface
      * BackendLoginEvent constructor.
      * @param BackendUserInfo $backendUser
      */
-    public function __construct(protected BackendUserInfo $backendUser)
+    public function __construct(private readonly BackendUserInfo $backendUser)
     {
     }
 

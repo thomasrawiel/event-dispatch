@@ -16,6 +16,6 @@ class AfterBackendUserLoginEventListener extends AbstractEventListener
      */
     public function eventListenerIsActive(): bool
     {
-        return $this->settings->getBackendUserLogin();
+        return (bool)$this->settings->getBackendUserLogin();
     }
 }
